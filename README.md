@@ -1,116 +1,84 @@
 ![Title Image lol](https://d3kjluh73b9h9o.cloudfront.net/optimized/4X/4/a/d/4ade2ab5b0a1dc722069a5616882a0152426432a_2_690x390.png)
 
-**Perfectly Optimized** is a Unreal Engine 5 starter template made to deliver performance gains on lower-end hardware.
+> [!WARNING]
+> **Real-time lighting does not work in this template.** All lighting must be baked. Movable lights will have no effect without additional configuration.
+>
+> If you are converting an existing project to use this template, **back up your project first**. Disabling Lumen and Virtual Shadow Maps can break existing lighting setups and is not easily reversible.
 
-Unreal Engine 5’s default configuration prioritizes ray-traced global illumination and virtualized geometry. While systems such as **Nanite** and **Lumen** work effectively on modern GPUs, they can overwhelm older GPUs and integrated graphics.
+# Perfectly Optimized — UE5 Performance Template
 
-This template changes the UE5 rendering pipeline for **stability and low GPU cost**, delivering performance closer to Unity forward rendered games.
+A minimal Unreal Engine 5 starter template built for **low-end hardware**. Replaces UE5's default ray-traced, virtualized rendering pipeline with a lightweight forward-style configuration suited to older GPUs, integrated graphics, and budget laptops.
 
----
-
-## Overview
-
-- Vulkan-based rendering  
-- High-end UE5 rendering features disabled by default  
-- Optimized for high and stable frame rates on low-spec systems  
-- Clean, lightweight template for performance  
+> If you've been held back by Lumen, Nanite, or DX12 overhead — this is your starting point.
 
 ---
 
-## Key Modifications
+## Why This Exists
 
-### Rendering Backend
-
-- Switched from **DirectX 12** to **Vulkan**
-- Improved compatibility with mobile and VR systems
-- Reduced shader runtime cost
-
-### Anti-Aliasing
-
-- Anti-aliasing changed to **FXAA**
-- **MSAA disabled (0 samples)**
-
-### Lighting Pipeline
-
-- **Lumen fully disabled**
-- No real-time global illumination or reflections
-- Project configured for **baked lighting**
-
-### Geometry and Virtualization
-
-- **Nanite disabled by default**
-- Avoids virtualized geometry processing
-- Ensures compatibility with GPUs lacking powerful compute resources
-
-### Reduced Package Size
-
-- **Disabled Prerequisites installer**
-- Exclude Editor Content While Cooking
-- Exclude Movies while staging
-
-### Additional Performance-Focused Changes
-
-- Reduced unecessary post processing
-- Virtual Shadow Maps disabled
-- Clean project configuration with no unnecessary runtime systems
+UE5's defaults (Lumen GI, Nanite, Virtual Shadow Maps, DX12) are designed for high-end GPUs. On anything older or less capable, they tank frame rates and cause unpredictable stutters. This template disables those systems upfront so you're building on a **stable, predictable baseline** — similar to what you'd get from Unity's forward renderer.
 
 ---
 
-## Technical Details
+## What's Changed
 
-**Features**
-- Vulkan-rendered UE5 template optimized for low-end hardware  
-- Lightweight sample maps with performance-focused settings  
+### Renderer
+| Setting | Default UE5 | This Template |
+|---|---|---|
+| RHI | DirectX 12 | **Vulkan** |
+| Anti-Aliasing | TAA | **FXAA** |
+| MSAA | Enabled | **Disabled** |
+| Global Illumination | Lumen | **Disabled (baked)** |
+| Reflections | Lumen | **Disabled** |
+| Shadows | Virtual Shadow Maps | **Disabled** |
+| Geometry | Nanite | **Disabled** |
 
-**Number of Blueprints**
-- None
+### Post Processing
+Unnecessary post-process passes stripped out. No bloom, lens flare, or ambient occlusion overhead by default.
 
-**Number of Maps**
-- 1
-
-**Input**
-- None
-*(No gameplay input bindings beyond engine defaults.)*
-
-**Network Replicated**
-- No
-
-**Supported Development Platforms**
-- Windows: Yes  
-- Mac: No  
-
-**Documentation**
-- Included in this repository
+### Package / Build
+- Prerequisites installer removed
+- Editor content excluded from cook
+- Movies excluded from staging
 
 ---
 
-## Intended Use Cases
+## Intended For
 
-- Developers targeting older PCs, budget laptops, VR Systems, Mobile Games and integrated GPUs  
-- Performance-sensitive prototypes and experiments  
-- Indie projects requiring a lightweight UE5 Project
-- Stylized, low-poly, or small-scale 3D projects  
-- Developers transitioning from Unity rendering to UE5
+- Older PCs, budget laptops, integrated GPUs
+- VR and mobile targets
+- Stylized, low-poly, or small-scale 3D projects
+- Performance-sensitive prototypes
+- Developers coming from Unity who want a familiar rendering cost profile
+
+## Not Intended For
+
+- Cinematic or high-fidelity rendering
+- Nanite/Lumen showcases
+- Projects requiring dynamic global illumination
 
 ---
 
-## What This Template Is Not
+## Contents
 
-- Not a gameplay framework  
-- Not a visual showcase  
-- Not a Nanite or Lumen demonstration  
-- Not intended for high-end or cinematic rendering
-
-This template exists to provide a **clean, fast, and predictable starting point** for Unreal Engine 5 projects where performance is a primary concern.
+| | |
+|---|---|
+| Blueprints | None |
+| Maps | 1 (lightweight sample scene) |
+| Input Bindings | None |
+| Network Replication | No |
+| Platform Support | Windows only |
 
 ---
 
 ## Getting Started
 
-1. Clone/download this repository or download from fab
-2. Open the `.uproject` file using Unreal Engine 5  
-3. **Build lighting**
-4. Begin development with a performance-optimized baseline
+```
+1. Clone or download this repository (or grab it from Fab)
+2. Open the .uproject in Unreal Engine 5
+3. Build lighting (required — Lumen is disabled)
+4. Start building
+```
+
+Baked lighting is **required** since Lumen is off. If you skip the lighting build, your scene will be unlit.
+
 ---
-
-
