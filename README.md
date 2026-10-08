@@ -1,4 +1,4 @@
-![Perfectly Optimized](https://d3kjluh73b9h9o.cloudfront.net/optimized/4X/4/a/d/4ade2ab5b0a1dc722069a5616882a0152426432a_2_690x390.png)
+![Perfectly Optimized](https://media.fab.com/image_previews/gallery_images/157640df-76c3-4a00-8946-0db21fecf862/75899c0c-4d09-46ef-8864-4ef9fe6fe280.jpg)
 
 <div align="center">
 
